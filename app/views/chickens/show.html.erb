@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chicken.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @chicken.type %>
+</p>
+
+<%= link_to 'Edit', edit_chicken_path(@chicken) %> |
+<%= link_to 'Back', chickens_path %>
