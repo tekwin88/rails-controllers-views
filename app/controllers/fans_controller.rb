@@ -1,13 +1,17 @@
 class FansController < ApplicationController
   #  before_action :set_fan, only: [:show, :edit, :update, :destroy]
+  
+  # resources :fans
+  # root 'fans#index'
    
-   Fan = ['Raymond']
+   FANS = ['Raymond', 'John', 'David']
     
   # GET /fans
   # GET /fans.json
+  
   def index
-     @fans = Fan
-  #  @fans = Fan.all
+  #  @description = FANS
+  @fans = Fans.all
   end
 
   # GET /fans/1
@@ -48,17 +52,15 @@ class FansController < ApplicationController
   # PATCH/PUT /fans/1
   # PATCH/PUT /fans/1.json
   def update
-    @fan = 'This is My Update Page'
-    
-    # respond_to do |format|
-    #   if @fan.update(fan_params)
-    #     format.html { redirect_to @fan, notice: 'Fan was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @fan }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @fan.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @fan.update(fan_params)
+        format.html { redirect_to @fan, notice: 'Fan was successfully updated.' }
+        format.json { render :show, status: :ok, location: @fan }
+      else
+        format.html { render :edit }
+        format.json { render json: @fan.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /fans/1
